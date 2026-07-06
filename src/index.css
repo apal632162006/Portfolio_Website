@@ -1,0 +1,300 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Editorial design system — inspired by Shopify Editions.
+   Warm cream canvas, ink typography, electric coral accent, oversized serif.
+   All colors are HSL. */
+
+@layer base {
+    :root {
+        /* Canvas */
+        --background: 36 33% 96%;
+        /* warm cream */
+        --foreground: 20 14% 8%;
+        /* ink */
+
+        --card: 36 33% 98%;
+        --card-foreground: 20 14% 8%;
+
+        --popover: 36 33% 98%;
+        --popover-foreground: 20 14% 8%;
+
+        /* Ink primary */
+        --primary: 20 14% 8%;
+        --primary-foreground: 36 33% 96%;
+
+        --secondary: 34 22% 90%;
+        --secondary-foreground: 20 14% 8%;
+
+        --muted: 34 20% 92%;
+        --muted-foreground: 25 8% 38%;
+
+        /* Signature accent — electric coral */
+        --accent: 12 92% 58%;
+        --accent-foreground: 36 33% 98%;
+
+        --destructive: 0 72% 51%;
+        --destructive-foreground: 36 33% 98%;
+
+        --border: 30 15% 85%;
+        --input: 30 15% 85%;
+        --ring: 12 92% 58%;
+
+        --radius: 1rem;
+
+        /* Extra editorial tokens */
+        --ink: 20 14% 8%;
+        --paper: 36 33% 96%;
+        --paper-soft: 34 25% 93%;
+        --chalk: 34 22% 88%;
+        --sun: 42 96% 62%;
+        --lime: 78 72% 58%;
+        --violet: 258 74% 62%;
+
+        --gradient-editorial: linear-gradient(135deg, hsl(12 92% 58%) 0%, hsl(28 96% 62%) 45%, hsl(42 96% 62%) 100%);
+        --gradient-ink: linear-gradient(180deg, hsl(20 14% 8%) 0%, hsl(20 14% 14%) 100%);
+        --gradient-soft: radial-gradient(ellipse at top, hsl(34 40% 94%) 0%, hsl(36 33% 96%) 70%);
+        --gradient-glow: radial-gradient(circle at 50% 50%, hsl(12 92% 58% / 0.35), transparent 60%);
+
+        --shadow-elevated: 0 30px 60px -30px hsl(20 14% 8% / 0.25);
+        --shadow-soft: 0 8px 30px -12px hsl(20 14% 8% / 0.12);
+        --shadow-glow: 0 0 60px hsl(12 92% 58% / 0.35);
+
+        --ease-editorial: cubic-bezier(0.22, 1, 0.36, 1);
+
+        --sidebar-background: 0 0% 98%;
+        --sidebar-foreground: 240 5.3% 26.1%;
+        --sidebar-primary: 240 5.9% 10%;
+        --sidebar-primary-foreground: 0 0% 98%;
+        --sidebar-accent: 240 4.8% 95.9%;
+        --sidebar-accent-foreground: 240 5.9% 10%;
+        --sidebar-border: 220 13% 91%;
+        --sidebar-ring: 217.2 91.2% 59.8%;
+    }
+
+    .dark {
+        --background: 24 12% 6%;
+        --foreground: 36 33% 94%;
+
+        --card: 24 12% 8%;
+        --card-foreground: 36 33% 94%;
+
+        --popover: 24 12% 8%;
+        --popover-foreground: 36 33% 94%;
+
+        --primary: 36 33% 94%;
+        --primary-foreground: 24 12% 6%;
+
+        --secondary: 24 10% 12%;
+        --secondary-foreground: 36 33% 94%;
+
+        --muted: 24 10% 12%;
+        --muted-foreground: 30 8% 62%;
+
+        --accent: 12 92% 62%;
+        --accent-foreground: 24 12% 6%;
+
+        --destructive: 0 62% 50%;
+        --destructive-foreground: 36 33% 94%;
+
+        --border: 24 8% 18%;
+        --input: 24 8% 18%;
+        --ring: 12 92% 62%;
+
+        --ink: 36 33% 94%;
+        --paper: 24 12% 6%;
+        --paper-soft: 24 10% 10%;
+        --chalk: 24 8% 16%;
+
+        --gradient-editorial: linear-gradient(135deg, hsl(12 92% 62%) 0%, hsl(28 96% 64%) 45%, hsl(42 96% 64%) 100%);
+        --gradient-ink: linear-gradient(180deg, hsl(24 12% 6%) 0%, hsl(24 12% 10%) 100%);
+        --gradient-soft: radial-gradient(ellipse at top, hsl(24 12% 10%) 0%, hsl(24 12% 6%) 70%);
+        --gradient-glow: radial-gradient(circle at 50% 50%, hsl(12 92% 62% / 0.28), transparent 60%);
+
+        --shadow-elevated: 0 30px 60px -30px hsl(0 0% 0% / 0.6);
+        --shadow-soft: 0 8px 30px -12px hsl(0 0% 0% / 0.5);
+        --shadow-glow: 0 0 60px hsl(12 92% 62% / 0.35);
+
+        --sidebar-background: 240 5.9% 10%;
+        --sidebar-foreground: 240 4.8% 95.9%;
+        --sidebar-primary: 224.3 76.3% 48%;
+        --sidebar-primary-foreground: 0 0% 100%;
+        --sidebar-accent: 240 3.7% 15.9%;
+        --sidebar-accent-foreground: 240 4.8% 95.9%;
+        --sidebar-border: 240 3.7% 15.9%;
+        --sidebar-ring: 217.2 91.2% 59.8%;
+    }
+}
+
+@layer base {
+    * {
+        @apply border-border;
+    }
+
+    html {
+        scroll-behavior: smooth;
+    }
+
+    body {
+        @apply bg-background text-foreground font-sans antialiased;
+        font-feature-settings: "ss01", "ss02", "cv01", "cv11";
+    }
+
+    ::selection {
+        background: hsl(var(--accent));
+        color: hsl(var(--accent-foreground));
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5 {
+        font-family: 'Fraunces', ui-serif, Georgia, serif;
+        font-optical-sizing: auto;
+        letter-spacing: -0.02em;
+    }
+}
+
+@layer components {
+    .editorial-heading {
+        font-family: 'Fraunces', ui-serif, Georgia, serif;
+        font-weight: 500;
+        letter-spacing: -0.035em;
+        line-height: 0.92;
+    }
+
+    .mono {
+        font-family: 'JetBrains Mono', ui-monospace, monospace;
+    }
+
+    .marquee-track {
+        display: flex;
+        width: max-content;
+        animation: marquee 40s linear infinite;
+    }
+
+    .grain::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        opacity: 0.04;
+        mix-blend-mode: multiply;
+        background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+    }
+}
+
+@layer utilities {
+    .text-balance {
+        overflow-wrap: balance;
+        hyphens: auto;
+    }
+
+    .text-pretty {
+        overflow-wrap: anywhere;
+    }
+
+    .bg-gradient-editorial {
+        background: var(--gradient-editorial);
+    }
+
+    .bg-gradient-ink {
+        background: var(--gradient-ink);
+    }
+
+    .bg-gradient-soft {
+        background: var(--gradient-soft);
+    }
+
+    .bg-gradient-glow {
+        background: var(--gradient-glow);
+    }
+
+    .shadow-elevated {
+        box-shadow: var(--shadow-elevated);
+    }
+
+    .shadow-soft {
+        box-shadow: var(--shadow-soft);
+    }
+
+    .shadow-glow {
+        box-shadow: var(--shadow-glow);
+    }
+
+    .ease-editorial {
+        transition-timing-function: var(--ease-editorial);
+    }
+}
+
+@keyframes marquee {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+@keyframes reveal-up {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes reveal-mask {
+    from {
+        clip-path: inset(0 100% 0 0);
+    }
+
+    to {
+        clip-path: inset(0 0 0 0);
+    }
+}
+
+@keyframes blob {
+
+    0%,
+    100% {
+        transform: translate(0, 0) scale(1);
+    }
+
+    33% {
+        transform: translate(30px, -20px) scale(1.08);
+    }
+
+    66% {
+        transform: translate(-20px, 30px) scale(0.94);
+    }
+}
+
+@keyframes float-y {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-14px);
+    }
+}
+
+@keyframes shine {
+    0% {
+        background-position: -200% 0;
+    }
+
+    100% {
+        background-position: 200% 0;
+    }
+}

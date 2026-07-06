@@ -318,6 +318,3 @@ If you like this project, please consider giving it a ⭐ on GitHub. It helps su
 ---
 
 ## Made with ❤️ by Ashish Pal
-````
-
-This README is suitable for a professional GitHub portfolio repository and includes setup instructions, features, technologies, project descriptions, and contact information. Before publishing, replace the placeholder live demo URL with your deployed website link and add a homepage screenshot to make the repository more attractive.
